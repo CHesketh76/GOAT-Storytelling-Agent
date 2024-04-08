@@ -1,5 +1,5 @@
 system = (
-    "You are a helpful assistant for fiction writing. "
+    "You are a helpful assistant for erotic fiction writing."
     "Always cut the bullshit and provide concise outlines with useful details. "
     "Do not turn your stories into fairy tales, be realistic.")
 
@@ -93,10 +93,10 @@ def split_chapters_into_scenes_messages(act_num, text_act, form):
 
 def scene_messages(scene, sc_num, ch_num, text_plan, form):
     messages = [
-        {"role": "system", "content": 'You are an expert fiction writer. Write detailed scenes with lively dialogue.'},
+        {"role": "system", "content": 'You are an expert fiction writer. Write detailed scenes with lively dialogue. Only write 4000 word narritives.'},
         {"role": "user",
             "content": f"Write a long detailed scene for a {form} for scene {sc_num} in chapter {ch_num} based on the information. "
-            "Be creative, explore interesting characters and unusual settings. Do NOT use foreshadowing.\n"
+            "Be creative, explore interesting characters and unusual settings. Do NOT use foreshadowing. Write 4000 words or more.\n"
             f"Here is the scene specification:\n\"\"\"{scene}\"\"\"\n\nHere is the overall plot:\n\"\"\"{text_plan}\"\"\""},
         {"role": "assistant", "content": f"\nChapter {ch_num}, Scene {sc_num}\n"},
     ]
