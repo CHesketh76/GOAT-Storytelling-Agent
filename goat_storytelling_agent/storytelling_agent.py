@@ -381,23 +381,23 @@ class StoryAgent:
     @staticmethod
     def prepare_scene_text(text):
         lines = text.split('\n')
-        ch_ids = [i for i in range(5)
-                  if 'Chapter ' in lines[i]]
+        ch_ids = [i for i in range(min(5, len(lines)))
+              if 'Chapter ' in lines[i]]
         if ch_ids:
-            lines = lines[ch_ids[-1]+1:]
-        sc_ids = [i for i in range(5)
-                  if 'Scene ' in lines[i]]
+        lines = lines[ch_ids[-1]+1:]
+        sc_ids = [i for i in range(min(5, len(lines)))
+              if 'Scene ' in lines[i]]
         if sc_ids:
-            lines = lines[sc_ids[-1]+1:]
-
+        lines = lines[sc_ids[-1]+1:]
+        
         placeholder_i = None
         for i in range(len(lines)):
-            if lines[i].startswith('Chapter ') or lines[i].startswith('Scene '):
-                placeholder_i = i
-                break
+        if lines[i].startswith('Chapter ') or lines[i].startswith('Scene '):
+            placeholder_i = i
+            break
         if placeholder_i is not None:
-            lines = lines[:i]
-
+        lines = lines[:i]
+        
         text = '\n'.join(lines)
         return text
 
